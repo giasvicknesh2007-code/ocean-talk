@@ -1,18 +1,13 @@
-# Base image
-FROM node:18-alpine
+FROM node:20.19.0
 
-# Create app directory
-WORKDIR /usr/src/app
+WORKDIR /app
 
-# Install dependencies
 COPY package*.json ./
-RUN npm install --production
 
-# Bundle app source
+RUN npm install
+
 COPY . .
 
-# Expose port
-EXPOSE 5000
+EXPOSE 10000
 
-# Start command
-CMD [ "npm", "start" ]
+CMD ["npm", "start"]
