@@ -18,7 +18,8 @@ router.post("/signup", async (req, res) => {
         const token = jwt.sign({ id: user._id, username: user.username }, process.env.JWT_SECRET, { expiresIn: "7d" });
         res.status(201).json({ token, username: user.username, userId: user._id });
     } catch (err) {
-        res.status(500).json({ message: err.message });
+        console.error("Signup Error:", err);
+        res.status(500).json({ message: "Server error during signup" });
     }
 });
 
@@ -36,7 +37,8 @@ router.post("/login", async (req, res) => {
         const token = jwt.sign({ id: user._id, username: user.username }, process.env.JWT_SECRET, { expiresIn: "7d" });
         res.json({ token, username: user.username, userId: user._id });
     } catch (err) {
-        res.status(500).json({ message: err.message });
+        console.error("Login Error:", err);
+        res.status(500).json({ message: "Server error during login" });
     }
 });
 
