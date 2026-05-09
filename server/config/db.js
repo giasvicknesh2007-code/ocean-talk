@@ -1,3 +1,4 @@
+// Production DB Config - Deploy Sync: 2026-05-10
 const mongoose = require("mongoose");
 
 const connectDB = async () => {
