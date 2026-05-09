@@ -24,10 +24,11 @@ connectDB();
 // Middleware
 app.use(express.json());
 app.use(cors());
-app.use(express.static(path.join(__dirname, "../public")));
-
 // Routes
 app.use("/api/auth", authRoutes);
+
+// Static Frontend
+app.use(express.static(path.join(__dirname, "../public")));
 
 // State Management
 const onlineUsers = new Map(); // userId -> { username, socketId, currentRoomId }
